@@ -6,6 +6,7 @@ import android.os.IBinder
 import com.fasterxml.jackson.databind.DeserializationFeature
 import com.fasterxml.jackson.module.kotlin.jacksonObjectMapper
 import com.fasterxml.jackson.module.kotlin.readValue
+import com.peddavid.wheaterapp.model.OpenWeatherMap.CurrentWeather
 import org.jetbrains.anko.AnkoLogger
 import org.jetbrains.anko.doAsync
 import org.jetbrains.anko.info
@@ -28,8 +29,7 @@ class TestService : Service(), AnkoLogger
         super.onStartCommand(intent, flags, startId)
         val city = intent?.extras?.get("city") ?: "Lisbon"
         doAsync {
-            Thread.sleep(3000)
-            val url = URL("http://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=c1acb32ea454f0837464e058f608471d")
+            val url = URL("http://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=bbf66afdde0edc717b3a6631c27611cc")
             val con = url.openConnection() as HttpURLConnection
             val input = BufferedReader(InputStreamReader(con.inputStream)).use{ it.readText() }
             val currentWeather = mapper.readValue<CurrentWeather>(input)
@@ -39,14 +39,3 @@ class TestService : Service(), AnkoLogger
         return START_NOT_STICKY
     }
 }
-
-data class CurrentWeather(
-        val weather: List<Weather>
-)
-
-data class Weather(
-        val id: Int,
-        val main: String,
-        val description: String,
-        val icon: String
-)
