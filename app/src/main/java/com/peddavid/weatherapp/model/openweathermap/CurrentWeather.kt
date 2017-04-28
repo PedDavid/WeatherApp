@@ -1,4 +1,4 @@
-package com.peddavid.wheaterapp.model.OpenWeatherMap
+package com.peddavid.weatherapp.model.openweathermap
 
 import android.os.Parcel
 import android.os.Parcelable

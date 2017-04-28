@@ -1,4 +1,4 @@
-package com.peddavid.wheaterapp;
+package com.peddavid.weatherapp;
 
 import org.junit.Test;
 

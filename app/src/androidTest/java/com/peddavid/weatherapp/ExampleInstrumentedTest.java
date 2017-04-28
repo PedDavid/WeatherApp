@@ -1,4 +1,4 @@
-package com.peddavid.wheaterapp;
+package com.peddavid.weatherapp;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;

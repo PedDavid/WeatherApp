@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.peddavid.wheaterapp">
+    package="com.peddavid.weatherapp">
 
     <uses-permission android:name="android.permission.INTERNET" />
     <application
@@ -10,13 +10,20 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity">
+        <activity android:name="com.peddavid.weatherapp.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <service android:name=".TestService" />
+        <service android:name="com.peddavid.weatherapp.TestService" />
+        <provider
+            android:authorities="com.peddavid.weatherapp"
+            android:name=".model.contentprovider.WeatherContract"
+            android:enabled="true"
+            android:exported="false"
+            android:multiprocess="false">
+        </provider>
     </application>
 
 </manifest>
