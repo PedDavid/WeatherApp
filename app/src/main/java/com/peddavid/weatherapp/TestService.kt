@@ -5,6 +5,7 @@ import android.content.ContentValues
 import android.content.Intent
 import android.os.IBinder
 import com.fasterxml.jackson.databind.DeserializationFeature
+import com.fasterxml.jackson.databind.ObjectMapper
 import com.fasterxml.jackson.module.kotlin.jacksonObjectMapper
 import com.fasterxml.jackson.module.kotlin.readValue
 import com.peddavid.weatherapp.model.contentprovider.WeatherContract
@@ -20,10 +21,8 @@ import java.net.URL
 class TestService : Service(), AnkoLogger
 {
     companion object {
-        val mapper = jacksonObjectMapper()
-        init {
-            mapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false)
-        }
+        val mapper: ObjectMapper = jacksonObjectMapper()
+                .configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false)
     }
     override fun onBind(intent: Intent?): IBinder? = null
 
@@ -44,6 +43,7 @@ class TestService : Service(), AnkoLogger
                 put(WeatherContract.CurrentWeather.MAX_TEMP, currentWeather.main.maxTemp)
                 put(WeatherContract.CurrentWeather.WIND_SPEED, currentWeather.wind.speed)
                 put(WeatherContract.CurrentWeather.ICON, currentWeather.weather[0].icon)
+                put(WeatherContract.CurrentWeather.DESCRIPTION, currentWeather.weather[0].description)
             }
             contentResolver.insert(WeatherContract.CurrentWeather.CONTENT_URI, values)
             stopSelf(startId)

@@ -50,6 +50,7 @@ class WeatherContract : ContentProvider()
             const val MAX_TEMP = "MAXIMUM_TEMPERATURE"
             const val WIND_SPEED = "WIND_SPEED"
             const val ICON = "ICON"
+            const val  DESCRIPTION = "DESCRIPTION"
         }
     }
 
@@ -70,6 +71,7 @@ class WeatherContract : ContentProvider()
                     ${CurrentWeather.MIN_TEMP} REAL NOT NULL,
                     ${CurrentWeather.MAX_TEMP} REAL NOT NULL,
                     ${CurrentWeather.WIND_SPEED} REAL NOT NULL,
+                    ${CurrentWeather.DESCRIPTION} TEXT NOT NULL,
                     ${CurrentWeather.ICON} TEXT NOT NULL)""")
 
         private fun dropTable(db: SQLiteDatabase, tableName: String) =
@@ -83,7 +85,7 @@ class WeatherContract : ContentProvider()
         }
     }
 
-    private lateinit var dbHelper: SQLiteHelper
+    private lateinit var dbHelper: SQLiteOpenHelper
 
     override fun onCreate(): Boolean {
         dbHelper = SQLiteHelper()
