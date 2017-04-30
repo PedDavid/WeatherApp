@@ -1,15 +1,27 @@
 package com.peddavid.weatherapp
 
+import android.app.job.JobInfo
+import android.app.job.JobScheduler
+import android.content.ComponentName
+import android.content.Context
+import android.os.Build
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import android.support.annotation.RequiresApi
 import com.peddavid.weatherapp.model.contentprovider.WeatherContract
 import org.jetbrains.anko.*
 import java.util.*
 
 class MainActivity : AppCompatActivity() {
 
+    @RequiresApi(Build.VERSION_CODES.LOLLIPOP)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        val jobInfo = JobInfo.Builder(0, ComponentName(this, TestJobService::class.java))
+                .setPeriodic(3000)
+                .build()
+        val scheduler = getSystemService(Context.JOB_SCHEDULER_SERVICE) as JobScheduler
+        scheduler.schedule(jobInfo)
         val layout = verticalLayout {
             val city = editText()
             button("Search City") {

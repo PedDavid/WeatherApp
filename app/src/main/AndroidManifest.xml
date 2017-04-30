@@ -17,6 +17,7 @@
             </intent-filter>
         </activity>
         <service android:name="com.peddavid.weatherapp.TestService" />
+        <service android:name=".TestJobService" android:permission="android.permission.BIND_JOB_SERVICE" />
         <provider
             android:authorities="com.peddavid.weatherapp"
             android:name=".model.contentprovider.WeatherContract"
