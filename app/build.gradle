@@ -37,7 +37,7 @@ dependencies {
 
     compile 'com.fasterxml.jackson.module:jackson-module-kotlin:2.8.8'
 
-    testCompile 'junit:junit:4.12'
+    testCompile 'junit:junit:4.13'
 }
 
 repositories {
