@@ -33,7 +33,7 @@ dependencies {
     compile "org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version"
 
     compile 'org.jetbrains.anko:anko-sdk15:0.9.1'
-    compile 'org.jetbrains.anko:anko-appcompat-v7:0.9.1'
+    compile 'org.jetbrains.anko:anko-appcompat-v7:0.10.8'
 
     compile 'com.fasterxml.jackson.module:jackson-module-kotlin:2.8.8'
 
